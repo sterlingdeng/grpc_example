@@ -14,13 +14,11 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 });
 
 const todo = grpc.loadPackageDefinition(packageDefinition).todo;
-console.log(todo);
 
 const client = new todo.ListActions(
   'localhost:50052',
   grpc.credentials.createInsecure()
 );
-console.log(client);
 
 /**
  *
@@ -32,7 +30,6 @@ function runGetList(res) {
     if (err) {
       throw err;
     }
-    console.log(list);
     res.json(list.items);
   });
 }
