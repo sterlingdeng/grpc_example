@@ -1,0 +1,20 @@
+{
+  "apps": [
+    {
+      "script": "./server/web/server.js",
+      "watch": true,
+      "ignore_watch": [".git", "node_modules"],
+      "group": "backend",
+      "exec_mode": "cluster",
+      "instances": 1
+    },
+    {
+      "script": "./server/grpc-server/grpc-server.js",
+      "watch": true,
+      "ignore_watch": [".git", "node_modules"],
+      "group": "backend",
+      "exec_mode": "cluster",
+      "instances": 1
+    }
+  ]
+}

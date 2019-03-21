@@ -1,0 +1,31 @@
+{
+  "name": "grpc-example",
+  "version": "1.0.0",
+  "description": "## What will be build?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "nodemon server/web/server.js",
+    "start": "node server/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@grpc/proto-loader": "^0.4.0",
+    "async": "^2.6.2",
+    "babel-loader": "^8.0.5",
+    "express": "^4.16.4",
+    "grpc": "^1.19.0",
+    "nodemon": "^1.18.10",
+    "pm2": "^3.4.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "^2.1.8",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
