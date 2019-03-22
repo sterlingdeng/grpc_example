@@ -8,6 +8,7 @@ A to-do list app with a simple react front-end. The react front end will make HT
 
 1. install dependencies using `npm install`
 2. run both servers using `node server/web/server.js & node server/grpc-server/grpc-server.js`
+3. open browser and navigate to `localhost:3000`
 
 ### Random
 
