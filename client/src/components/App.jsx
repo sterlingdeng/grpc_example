@@ -32,8 +32,12 @@ export default class App extends Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.state.addTextBox)
-    });
+      body: JSON.stringify({ item: this.state.addTextBox })
+    })
+      .then(res => res.json())
+      .then(list => {
+        this.setState({ list });
+      });
   }
 
   render() {

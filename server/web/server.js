@@ -1,9 +1,11 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const { runGetList } = require('./grpc-client');
+const { runGetList, runAddNewToDo } = require('./grpc-client');
+const bodyParser = require('body-parser');
 
 app.use('/build', express.static(path.resolve(__dirname, '../../build')));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../client/index.html'));
@@ -14,7 +16,7 @@ app.get('/getList', (req, res) => {
 });
 
 app.post('/add', (req, res) => {
-  //
+  runAddNewToDo(req.body, res);
 });
 
 const PORT = 3000;

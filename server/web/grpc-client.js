@@ -25,13 +25,21 @@ const client = new todo.ListActions(
  * @param {function} cb called to perform actions using the list data
  */
 
-function runGetList(res) {
-  client.GetList({}, (err, list) => {
-    if (err) {
-      throw err;
-    }
-    res.json(list.items);
-  });
-}
-
-exports.runGetList = runGetList;
+module.exports = {
+  runGetList: res => {
+    client.GetList({}, (err, list) => {
+      if (err) {
+        throw err;
+      }
+      res.json(list.items);
+    });
+  },
+  runAddNewToDo: (newToDo, res) => {
+    client.AddItem(newToDo, (err, list) => {
+      if (err) {
+        throw err;
+      }
+      res.json(list.items);
+    });
+  }
+};

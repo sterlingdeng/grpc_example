@@ -22,10 +22,16 @@ function GetList(call, callback) {
   callback(null, { items: toDoList });
 }
 
+function AddItem(call, callback) {
+  toDoList.push(call.request);
+  callback(null, { items: toDoList });
+}
+
 function getServer() {
   const server = new grpc.Server();
   server.addService(todo_proto.ListActions.service, {
-    GetList: GetList
+    GetList: GetList,
+    AddItem: AddItem
   });
   return server;
 }
