@@ -26,12 +26,28 @@ function AddItem(call, callback) {
   toDoList.push(call.request);
   callback(null, { items: toDoList });
 }
+/**
+ *
+ * @param {Duplex} call The stream for incoming and outgoing messages
+ */
+function ItemStreamer(call) {
+  console.log('stream open');
+  let counter = 0;
+  call.on('data', msg => {
+    call.write({ msg: `${msg.item} - count: ${counter++}` });
+  });
+  call.on('end', () => {
+    call.end();
+    console.log('stream closed');
+  });
+}
 
 function getServer() {
   const server = new grpc.Server();
   server.addService(todo_proto.ListActions.service, {
     GetList: GetList,
-    AddItem: AddItem
+    AddItem: AddItem,
+    ItemStreamer: ItemStreamer
   });
   return server;
 }

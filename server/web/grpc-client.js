@@ -41,5 +41,13 @@ module.exports = {
       }
       res.json(list.items);
     });
+  },
+  runItemStreamer: () => {
+    const call = client.ItemStreamer();
+    call.on('data', data => console.log(data));
+    return {
+      ender: () => call.end(),
+      writer: msg => call.write(msg)
+    };
   }
 };

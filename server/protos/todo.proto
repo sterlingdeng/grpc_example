@@ -5,6 +5,7 @@ service ListActions {
   rpc AddItem (Item) returns (ItemList) {}
   // rpc RemoveItem(Item) returns (ItemList) {}
   rpc GetList(GetListParams) returns (ItemList) {}
+  rpc ItemStreamer(stream Item) returns (stream StreamResponse) {}
 }
 
 message GetListParams {}
@@ -15,4 +16,8 @@ message Item {
 
 message ItemList {
   repeated Item items = 1;
+}
+
+message StreamResponse {
+  optional string msg = 1;
 }
